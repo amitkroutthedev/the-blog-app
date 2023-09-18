@@ -1,0 +1,163 @@
+---
+title: How to protect routes for different user roles with restricted access?
+seoTitle: How to protect routes for different user roles with restricted access?
+abstract: To solves privacy of the users of different roles in routing in react app
+isPublished: true
+publishedOn: 2023-04-18T09:15:00-0400
+layout: Article
+---
+
+
+# How to protect routes for different user roles with restricted access?
+**Introduction**  
+Web applications often require different levels of access for various users. For instance, an administrator may need access to specific features that a regular user may not. One way to manage user access in your web application is by setting up protected routes.
+
+In React, we use the 'react-router' package to set up public and protected routes. To install 'react-router' in a React application, you can use the following command:  `npm i react-router`.
+**Protected Route**  
+In most cases, for protected routes, users are logged out automatically if they are not authenticated. However, in a role-based application, if an authenticated user of a different role tries to access a route that is not permitted, the protection mechanism may be violated.
+
+The goal is to redirect the user back to the previous URL if they try to access a route that is not permitted for their role.  
+Firstly, the project file structure
+
+<img src="../assets/thirdBlogScreenshot.png" alt="file str"/>
+
+In  `PageRouter.js`  
+
+```javascript
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+} from "react-router-dom";
+
+import LoginPage from "../pages/LoginPage";
+import UserRegistration from "../pages/UserRegistration";
+import AdminPage from "../pages/admin/AdminPage"
+mport UserPage from "../pages/user/UserPage"
+
+export const PageRouter = () => {
+
+    return (
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<LoginPage />} />
+                <Route exact path="/userReg" element={<UserRegistration />} />
+                <Route exact path="/adminPage" element={<AdminPage />} />
+                <Route exact path="/userPage" element={<UserPage />} />
+            </Routes>
+        </Router>
+    )
+}
+```
+_Import PageRouter.js in app.js_
+
+Currently, there are two roles - "Admin" and "User" - for which we have created two files,  `ProtectedRouteAdmin.js`  and  `ProtectedRouteUser.js`.
+
+In  `ProtectedRouteAdmin.js`  
+
+```javascript
+import {useEffect} from "react";
+import { Route,Redirect, Navigate, Outlet, useNavigate, useLocation} from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+
+const ProtectedRouteAdmin = (props) => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  function presentPage() {
+    navigate(-1);
+  }
+
+  if (!token) return <Navigate to="/" />;
+
+  useEffect(()=>{
+    if(token && jwtDecode(token).role!== "admin"){ 
+      presentPage()
+      }
+  },[token && jwtDecode(token).role!== "admin"])
+
+  const decodedData = jwtDecode(token);
+
+
+  if (decodedData.role === "admin") {
+    return <Outlet {...props} />;
+  }
+ else if(decodedData.role!=="admin"){
+   presentPage()
+  }
+};
+
+export default ProtectedRouteAdmin;
+
+```
+
+And in  `ProtectedRouteUser.js`  
+
+```javascript
+import {useEffect} from "react";
+import { Route,Redirect, Navigate, Outlet, useNavigate, useLocation} from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+
+const ProtectedRouteUser = (props) => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  function presentPage() {
+    navigate(-1);
+  }
+
+  if (!token) return <Navigate to="/" />;
+
+  useEffect(()=>{
+    if(token && jwtDecode(token).role!== "user"){ 
+      presentPage()
+      }
+  },[token && jwtDecode(token).role!== "user"])
+
+  const decodedData = jwtDecode(token);
+
+
+  if (decodedData.role === "user") {
+    return <Outlet {...props} />;
+  }
+ else if(decodedData.role!=="admin"){
+   presentPage()
+  }
+};
+
+export default ProtectedRouteUser;
+
+```
+
+Updating code in  `PageRoute.js`  
+
+```javascript
+//other imports
+import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
+import ProtectedRouteUser from "./ProtectedRouteUser";
+
+export const PageRouter = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<LoginPage />} />
+                <Route exact path="/userReg" element={<UserRegistration />} />
+               <Route element={<ProtectedRouteAdmin/>}>
+                  <Route exact path="/adminPage" element={<AdminPage />} />
+</Route>
+               <Route element={<ProtectedRouteUser/>}>
+                  <Route exact path="/usPage" element={<AdminPage />} />
+</Route>
+            </Routes>
+        </Router>
+    )
+}
+
+```
+
+**Conclusion**  
+The protected routes have been set up. Test them to ensure they are working correctly by logging in with different user roles and checking if they have access to the appropriate routes. If necessary, you can add Redux to check authorized routes.
+
+I hope this helps you to write Protected Routes in a better way!
+
+**Happy Coding!**

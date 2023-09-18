@@ -1,0 +1,87 @@
+---
+title: Resetting Reducer State in React and Redux for Better State Management
+seoTitle: Resetting Reducer State in React and Redux for Better State Management
+abstract: How to reset temporary states in redux such as delete and update messages
+isPublished: true
+publishedOn: 2023-09-13T09:15:00-0400
+layout: Article
+---
+# Bun 1.0 ⚡:All-in-One Toolkit
+
+JavaScript has always been a dynamic language with a vibrant ecosystem. Over the years, we've seen a plethora of tools designed to make JavaScript development easier, faster, and more efficient.
+
+Currently, there is a new development: [Bun 1.0](https://bun.sh/), which serves as a runtime, package manager, test runner, and bundler for JavaScript and TypeScript.
+
+## How fast is Bun compared to node?
+
+To test it I am using 
+
+- Node - `v20.6.1`
+
+- Bun - `v1.0.0`
+
+### 1. Running a performance test
+I am using this code to test performance
+
+```javascript
+console.time('test');
+for (let i = 0; i < 10000; i++) console.log(i)
+console.timeEnd("test");
+```
+I have created a node file by `npm init`
+
+![creating node](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5i444rbw4g31szxfq5hc.png)
+Running the index.js script
+
+![node test](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pcbf5mjsvw9jnxlb2ego.png)
+
+I am getting around 154.889ms.
+
+To create in bun, we will use `bun init`
+
+![creating bun](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/56r5zxwkdmw4mc1imw3y.png)
+
+Running the same index.js script
+
+![bun test](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x8siai1bffgx125ypn8q.png)
+
+I am getting around 61.35ms⚡.
+
+> I have changed console logs to create difference between node and bun
+
+### 2. Creating Ecosystem(create-vite-app, create-react-app)
+
+We will run same commands in npx and bunx to measure creating time.
+
+I created react project using create-react-app
+`$npx create-react-app node-text-react`
+![npx](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/inf91rzf9m483bbz3a3k.png) 
+`$bun x create-react bun-text-react`
+![bun](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uqb2qvbfaezp96jzp2vx.png)
+
+Both are adding same number of packages(1455) but npx does it in 35s whereas bunx(`bun x`) does it in 19s⚡.
+
+After CRA, I tried in vite project
+`$npm create vite@latest`
+![npm vite](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ve1db61cqe3ppsh64qnf.png)
+`$bun x create-vite vite-project-bun`
+![bun vite](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4mosztdyh6zys6j1ft9l.png)
+
+Both added 262 pakages but node does it in 11s whereas bunx(`bun x`) does it in 1.2s⚡.
+
+Then I tried creating next app with bun and node 
+`$bun x create-next-app`
+![bun next](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xooymb4h867mpcdn5z0v.png)
+`$npx create-next-app@latest`
+![node next](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/16xxchayq5fcybtz5qpt.png)
+
+Bun installed 321 packages in 7.85s⚡ where as node installed 325 packages in 22s.
+
+
+## Conclusion
+
+Bun is very fast as compared with node and yarn, node, deno (according to documentation). It is based on Javascript Core Engine and Zig. Still there are some disadvantages like it can't run on Windows machine and also bugs as it is first stable release. With the introduction of Bun as a new contender in the Node ecosystem, developers now have viable alternatives to Node.
+
+If you have any suggestions, please leave them in the comments section. If you found this post helpful, please like and share it.
+
+**Happy Coding!**
