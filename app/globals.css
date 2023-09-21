@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 
 /*:root {
   --foreground-rgb: 0, 0, 0;
@@ -29,22 +30,21 @@ body {
 */
 
 /* width */
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
   width: 5px;
   border-radius: 50%;
 }
 
-/* Track */
+
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: #7b92b2;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
+} 
