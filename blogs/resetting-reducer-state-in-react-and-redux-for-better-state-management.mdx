@@ -6,11 +6,11 @@ isPublished: true
 publishedOn: 2023-05-26T09:15:00-0400
 layout: Article
 ---
-# Resetting Reducer State in React and Redux for Better State Management
-**Introduction:**
+
+## Introduction:
 In React and Redux applications, managing state efficiently is crucial for optimal performance. One common issue developers face is the persistence of reducer state in useSelector hooks, causing unnecessary re-renders even when actions are not called. In this article, we'll explore the importance of resetting the reducer state and how to implement it in your application.
 
-**Section 1: Understanding the Problem**
+### Section 1: Understanding the Problem
 The useSelector hook is a powerful tool in Redux that allows components to access the Redux store's state. However, when the reducer state is not reset, useSelector can cause unnecessary re-renders, impacting performance.
 Consider the following example:
 ```javascript
@@ -55,10 +55,10 @@ In the above example, we are retrieving a user list from reducers and rendering 
 
 The problem arises when a user is being added (let's consider a successful entry). The snackbar displays the success message retrieved from the useSelector hook. However, if the page is re-rendered, the snackbar still shows the message, even if the user has not been added.
 
-**Section 2: Resetting Reducer State**
+### Section 2: Resetting Reducer State
 To prevent unnecessary re-renders, we can reset the reducer state after performing actions like delete, edit, or create. This ensures that the useSelector hook only triggers re-renders when relevant actions are called.
 
-**Section 3: Implementing Reset Actions**
+### Section 3: Implementing Reset Actions
 First let's create a reset state in reducer:
 
 ```javascript
@@ -97,7 +97,7 @@ export default Page;
 
 Now, whenever the Snackbar is active and closes after 3 seconds, it will also empty the object in the `addUser` reducer, effectively resetting the state. You can also reset all states at once, but if it is only necessary to reset one state, this is the recommended approach.
 
-**Conclusion:**
+## Conclusion:
 Resetting the reducer state in React and Redux applications is essential for efficient state management and preventing unnecessary re-renders. By implementing reset actions and handling them in your reducers, you can improve your application's performance and ensure a smoother user experience. Give this technique a try in your projects and see the difference it makes!
 
 If you have any suggestions for improving the code, please leave them in the comments section. If you found this post helpful, please like and share it.

@@ -7,18 +7,19 @@ publishedOn: 2023-04-18T09:15:00-0400
 layout: Article
 ---
 
-# How to protect routes for different user roles with restricted access?
-**Introduction**  
+
+## Introduction
 Web applications often require different levels of access for various users. For instance, an administrator may need access to specific features that a regular user may not. One way to manage user access in your web application is by setting up protected routes.
 
 In React, we use the 'react-router' package to set up public and protected routes. To install 'react-router' in a React application, you can use the following command:  `npm i react-router`.
-**Protected Route**  
+
+## Protected Route
 In most cases, for protected routes, users are logged out automatically if they are not authenticated. However, in a role-based application, if an authenticated user of a different role tries to access a route that is not permitted, the protection mechanism may be violated.
 
 The goal is to redirect the user back to the previous URL if they try to access a route that is not permitted for their role.  
 Firstly, the project file structure
 
-<img src="../assets/thirdBlogScreenshot.png" alt="file str"/>
+![fille str](https://res.cloudinary.com/practicaldev/image/fetch/s--YV5k-8iN--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/auwed3zl1h1az5ohqi8d.png)
 
 In  `PageRouter.js`  
 
@@ -154,9 +155,10 @@ export const PageRouter = () => {
 
 ```
 
-**Conclusion**  
+## Conclusion
 The protected routes have been set up. Test them to ensure they are working correctly by logging in with different user roles and checking if they have access to the appropriate routes. If necessary, you can add Redux to check authorized routes.
 
 I hope this helps you to write Protected Routes in a better way!
 
 **Happy Coding!**
+
