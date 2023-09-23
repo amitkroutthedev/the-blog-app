@@ -12,6 +12,13 @@ module.exports = {
         'spacemono': ['Space Mono', 'monospace'],
         'majormono': ['Major Mono Display', 'monospace']
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+          }
+        }
+      }
     },
     /* extend: {
        backgroundImage: {
@@ -24,6 +31,29 @@ module.exports = {
   plugins: [require('@tailwindcss/typography'),
   require("daisyui")],
   daisyui: {
-    themes: ["dracula"],
+    themes: [
+      {
+        mytheme: {
+
+          "primary": "#ef4782",
+
+          "secondary": "#6fc43e",
+
+          "accent": "#de57f9",
+
+          "neutral": "#181d21",
+
+          "base-100": "#2b374a",
+
+          "info": "#2671d9",
+
+          "success": "#59d9b7",
+
+          "warning": "#dca604",
+
+          "error": "#fb4b7a",
+        },
+      },
+    ],
   },
 }

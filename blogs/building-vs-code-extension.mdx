@@ -7,11 +7,9 @@ publishedOn: 2023-04-10T09:15:00-0400
 layout: Article
 ---
 
-# Building my first VS Code Extension
-
 _I recently built my first VS Code extension and published it. It consists of basic code snippets that include commonly used React packages._
 
-**What are Code Snippets?**  
+## What are Code Snippets?
 Code snippets are reusable blocks of code that can be inserted into your code editor with a single command or 
 keyboard shortcut. Snippets can be used to save time by automating common tasks, such as creating boilerplate code 
 or filling in repetitive code patterns. Snippets can also improve code quality by ensuring that code adheres to best 
@@ -19,7 +17,7 @@ practices or standards.
 
 ![Extension](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ss6q04wnjj887doumu2h.png)
 
-**Building a Code Snippets Extension**
+## Building a Code Snippets Extension
 
 1.  Install the yo and generator-code packages using the following command:
 ```
@@ -31,13 +29,13 @@ yo code
 ```
 3.  Follow the prompts to configure your extension. When prompted, select "New Code Snippets" as the project type.
 
-<img src="../assets/secondBlogScreenshot2.png" alt="code"/>
+![Questions](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uik5aduzu408b5lqd7go.png)
 
 4. The VS Code snippet editor will open. Here, you can define your code snippets using a JSON format.
 5. Define your code snippets in the 'prefix', 'body', and 'description' properties within the 'snippets.code-snippets' file in the 'snippets' folder
 6. Test your code snippets extension using the VS Code debugger.
 
-**Publishing VS Code extension**
+## Publishing VS Code extension
 
 1.  Install vsce with  `npm install -g vsce`
 2.  Create an account in  [VS Code MarketPlace](https://marketplace.visualstudio.com/VSCode)  and create an organisation
@@ -74,7 +72,7 @@ and if it ask for license then add a LICENSE.md file
 
 [**Extension in VS Code Marketplace**](https://marketplace.visualstudio.com/items?itemName=AmitKRout.js-helper-code-extension-vs)
 
-**Conclusion**
+## Conclusion
 
 Building a code snippets extension on VS Code is a great way to share your code snippets with others and improve your own productivity. With a few simple steps, you can create a custom extension that automates common tasks and adheres to best practices.
 

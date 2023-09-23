@@ -19,41 +19,51 @@ export async function generateMetadata({ params }) {
     const { slug } = params
     const props = await getPostBySlug(slug)
     return {
-      title: props.meta.title,
-      description:props.meta.seoTitle
+        title: props.meta.title,
+        description: props.meta.seoTitle
     }
-  }
+}
 
 export default async function Page({ params }) {
     const { slug } = params
     const props = await getPostBySlug(slug)
-    console.log(props, typeof props)
-    
+    // console.log(props, typeof props)
 
-   let pubTime = new Date(props.meta.publishedOn)
+    let pubTime = new Date(props.meta.publishedOn)
 
-   let articlePublishTime = new Intl.DateTimeFormat('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(pubTime)
+    let articlePublishTime = new Intl.DateTimeFormat('en-GB').format(pubTime)
 
     return <div className="px-28 py-10">
-        <h1 className="text-6xl font-spacemono">{props.meta.title}</h1>
-        <div className="text-slate-500 flex items-center py-4 space-x-14">
-            <div className="flex items-center space-x-2">
+        <div className="text-slate-500 flex justify-between">
+            <div className="flex items-center space-x-2  font-majormono">
                 <LiaCalendarSolid size={40} />{articlePublishTime}
             </div>
-            <div className="flex items-center space-x-2">
-                <BsPersonCircle size={40} />{props.meta.publisher}
-            </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center font-majormono">
                 <CgTimer size={42} />{props.meta.readingTime}
-            </div> 
+            </div>
+        </div>
+        <h1 className="text-6xl font-spacemono text-primary-focus">{props.meta.title}</h1>
+        <div className="">
+            <div className="flex items-center text-slate-500 font-majormono">
+                {props.meta.publisher}
+            </div>
+
 
         </div>
         {/*<div className="border-4 border-sky-200 p-10 font-spacemono text-xl space-y-2">
         <MDXRemote source={props.content}/>
     </div> */}
-    <div className="prose border-4 border-sky-200 p-10 font-spacemono text-xl space-y-2 mx-auto">
-         {props.content}
-    </div>
+        <div className="p-4">
+            <div className="prose 
+        prose-h2:text-secondary-focus 
+        prose-h3:text-secondary 
+       prose-code:text-xl 
+        prose-strong:text-error
+        min-w-prose bg-base-200 p-4 font-spacemono space-y-2 w-4/6 mx-auto"
+            >
+                {props.content}
+            </div>
+        </div>
     </div>
 }
 
