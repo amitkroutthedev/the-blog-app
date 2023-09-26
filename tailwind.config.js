@@ -33,7 +33,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        mytheme: {
+        mydarktheme: {
 
           "primary": "#ef4782",
 
@@ -53,6 +53,25 @@ module.exports = {
 
           "error": "#fb4b7a",
         },
+        mylighttheme: {
+          "primary": "#0176ba",
+
+          "secondary": "#b633ea",
+
+          "accent": "#cc724b",
+
+          "neutral": "#2d232f",
+
+          "base-100": "#fcfdfd",
+
+          "info": "#1f6ee5",
+
+          "success": "#15754b",
+
+          "warning": "#eb980a",
+
+          "error": "#e06952",
+        }
       },
     ],
   },

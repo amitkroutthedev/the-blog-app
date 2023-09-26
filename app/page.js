@@ -1,12 +1,12 @@
 import { getAllArticles } from '@/src/utils/mdx';
-import Image from 'next/image'
 import Link from 'next/link';
-import { FaGithub } from "react-icons/fa"
-import { RiSunLine } from "react-icons/ri"
-import { PiMoonStars } from "react-icons/pi"
+import UseDarkMode from './useDarkMode';
+
 //import useDarkMode from './changeTheme';
 
 export default async function Home() {
+
+    //const [colorTheme, setTheme] = useDarkMode();
 
     const articles = await getAllArticles()
 
@@ -21,9 +21,7 @@ export default async function Home() {
     const allArticles = sortArticles()
     return (
         <main className='flex h-screen lg:flex-col md:flex-col sm:flex-col flex-col'>
-            <div className="px-10 flex justify-end items-center space-x-10 navbar bg-base-100">
-                <a href='https://github.com/amitkroutthedev/the-blog-app'><FaGithub size={25} /></a>
-            </div>
+            <UseDarkMode/>
             <div className='flex items-center px-2 w-full font-spacemono'>
                 <div className='h-96'>
                     <p className='text-8xl flex flex-wrap'>
@@ -55,6 +53,7 @@ export default async function Home() {
                                     </div>
                                     <Link
                                         href={`/blog/${dataArticle.slug}`}
+                                        
                                         className="block text-center text-lg font-bold uppercase text-primary-focus transition font-spacemono"
                                     >
                                         Read Blog

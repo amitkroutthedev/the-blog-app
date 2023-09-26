@@ -63,13 +63,25 @@ export async function getAllArticles() {
 export const getPostBySlug = async slug => {
     const realSlug = slug.replace(/\.mdx$/, '')
     const filePath = path.join(articlesPath, `${realSlug}.mdx`)
-
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
 
     const { frontmatter, content } = await compileMDX({
         source: fileContent,
         options: { parseFrontmatter: true }
     })
+
+   /* return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                meta: {
+                    ...frontmatter,
+                    slug: realSlug,
+                    publisher: "Amit Kumar Rout",
+                    readingTime: readingTime(fileContent).text,
+                }, content
+            })
+        },1000)
+    })*/
 
     return {
         meta: {
@@ -79,5 +91,5 @@ export const getPostBySlug = async slug => {
             readingTime: readingTime(fileContent).text,
         }, content
     }
-  
+
 }

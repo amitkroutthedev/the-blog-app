@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
     const { slug } = params
     const props = await getPostBySlug(slug)
-    // console.log(props, typeof props)
+
 
     let pubTime = new Date(props.meta.publishedOn)
 
