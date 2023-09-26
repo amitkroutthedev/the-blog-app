@@ -8,7 +8,7 @@ import { RiSunLine } from "react-icons/ri"
 
 function UseDarkMode() {
     const [theme, setTheme] = useState(
-        typeof localStorage.theme !== "undefined" ? localStorage.theme : "mydarktheme"
+        typeof window !== "undefined"&&localStorage.getItem("theme") ? localStorage.getItem("theme") : "mydarktheme"
     );
     
     const root = window.document.documentElement;
@@ -33,11 +33,9 @@ function UseDarkMode() {
         <div className="flex-none space-x-10">
         <a href='https://github.com/amitkroutthedev/the-blog-app'><FaGithub size={25} /></a>
         {theme==="mydarktheme" && <button onClick={() => {
-           
             setTheme("mylighttheme")
         }}><RiSunLine size={25} /></button>}
         {theme==="mylighttheme" && <button onClick={() => {
-            
             setTheme("mydarktheme")
         }}><PiMoonStars size={25}/></button>}
         </div>

@@ -1,13 +1,6 @@
-"use client"
-import Link from 'next/link'
 
 import { ErrorBoundary } from 'react-error-boundary'
 import PError from './error'
-
-import Loading from './loading'
-
-import { Suspense } from 'react'
-
 import UseDarkMode from './useDarkMode'
 
 

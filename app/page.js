@@ -37,7 +37,7 @@ export default async function Home() {
                         let pubOn = new Date(dataArticle.publishedOn)
                         let publishedDate = pubOn.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })
                         return (
-                            <article className="p-6 bg-neutral flex flex-1 flex-col justify-between rounded-xl" key={dataArticle.titlr}>
+                            <article className="p-6 bg-neutral flex flex-1 flex-col justify-between rounded-xl" key={dataArticle.title}>
                                 <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
                                     <h3 className="font-bold uppercase text-primary font-spacemono text-xl">
                                         {dataArticle.title}
