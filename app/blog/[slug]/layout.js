@@ -2,6 +2,7 @@
 import { ErrorBoundary } from 'react-error-boundary'
 import PError from './error'
 import UseDarkMode from './useDarkMode'
+import ScrollButton from './scrollToTop'
 
 
 
@@ -13,10 +14,11 @@ export default function RootLayout({ children }) {
 
     return (
         <ErrorBoundary fallback={<PError />}>
-                <UseDarkMode/>
-                <div className='border-3 border-sky-200'>
-                    {children}
-                </div>
+            <UseDarkMode />
+            <div className='border-3 border-sky-200'>
+                {children}
+                
+            </div>
         </ErrorBoundary>
     )
 }

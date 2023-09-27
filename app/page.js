@@ -24,7 +24,7 @@ export default async function Home() {
             <UseDarkMode/>
             <div className='flex items-center px-2 w-full font-spacemono'>
                 <div className='h-96'>
-                    <p className='text-8xl flex flex-wrap'>
+                    <p className='xl:text-8xl max-lg:text-7xl max-md:text-6xl max-sm:text-5xl flex flex-wrap'>
                         <span className='text-primary'>{`>`}</span>
                         thedev<span className='text-secondary'>blog</span>
                     </p>

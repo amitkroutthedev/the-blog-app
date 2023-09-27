@@ -23,7 +23,7 @@ function UseDarkMode() {
         }
     }, [theme,root]);
 
-    return <div className="px-28 navbar bg-base-100">
+    return <div className="px-28 navbar bg-base-100 max-sm:px-10">
         <div className="flex-1">
             <Link className='text-xl flex flex-wrap font-spacemono' href={'/'}>
                 <span className='text-primary'>{`>`}</span>
