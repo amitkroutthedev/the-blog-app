@@ -43,13 +43,11 @@ export default async function Page({ params }) {
                 <CgTimer size={42} />{props.meta.readingTime}
             </div>
         </div>
-        <h1 className="text-6xl max-sm:text-4xl font-spacemono text-primary-focus break-all">{props.meta.title}</h1>
-        <div className="">
+        <h1 className="text-5xl max-sm:text-3xl font-spacemono text-primary-focus">{props.meta.title}</h1>
+        <div className="pb-4">
             <div className="flex items-center text-slate-500 font-majormono">
                 {props.meta.publisher}
             </div>
-
-
         </div>
         <div className="">
             <div className="prose max-sm:max-w-prose
