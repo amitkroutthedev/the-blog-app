@@ -34,7 +34,7 @@ export default async function Page({ params }) {
 
     let articlePublishTime = new Intl.DateTimeFormat('en-GB').format(pubTime)
 
-    return <div className="px-28 py-10 max-sm:px-10">
+    return <div className="px-28 py-10 max-sm:px-2">
         <div className="text-slate-500 flex justify-between">
             <div className="flex items-center space-x-2  font-majormono">
                 <LiaCalendarSolid size={40} />{articlePublishTime}
@@ -55,7 +55,7 @@ export default async function Page({ params }) {
                         prose-h3:text-secondary 
                     prose-code:text-xl max-sm:prose-code:text-base
                         prose-strong:text-error
-        min-w-prose bg-base-200 p-2 font-spacemono space-y-2 w-11/12 mx-auto break-all"
+        min-w-prose bg-base-200 p-2 font-spacemono space-y-2 w-11/12 max-sm:w-full mx-auto"
             >
                 {props.content}
             </div>
